@@ -7617,3 +7617,4 @@ abort_due_to_interrupt:
   sqlite3VdbeError(p, "%s", sqlite3ErrStr(rc));
   goto abort_due_to_error;
 }
+
