@@ -17,6 +17,7 @@
 ** access to all of the R-Tree internals.
 */
 #include <stdlib.h>
+#include "sqlite3.h"
 
 /* Enable -DGEOPOLY_ENABLE_DEBUG for debugging facilities */
 #ifdef GEOPOLY_ENABLE_DEBUG
@@ -604,8 +605,8 @@ static void geopolyRegularFunc(
   p->hdr[3] = n&0xff;
   for(i=0; i<n; i++){
     double rAngle = 2.0*GEOPOLY_PI*i/n;
-    GeoX(p,i) = x - r*geopolySine(rAngle-0.5*GEOPOLY_PI);
-    GeoY(p,i) = y + r*geopolySine(rAngle);
+    GeoX(p,i) = (GeoCoord)(x - r*geopolySine(rAngle-0.5*GEOPOLY_PI));
+    GeoY(p,i) = (GeoCoord)(y + r*geopolySine(rAngle));
   }
   sqlite3_result_blob(context, p->hdr, 4+8*n, SQLITE_TRANSIENT);
   sqlite3_free(p);

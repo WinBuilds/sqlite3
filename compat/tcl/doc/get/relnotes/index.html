@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>ActiveTcl 8.6.8 Documentation</title>
+    <meta name="generator" content="Hugo 0.26" />
+
+    
+    <meta name="description" content="Complete documentation for ActiveTcl 8.6.8">
+    
+    <link rel="canonical" href="index.html">
+    
+
+    
+    <meta name="apple-mobile-web-app-title" content="ActiveTcl 8.6.8 Documentation">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('../../fonts/icon.eot');
+        src: url('../../fonts/icon.eot')
+               format('embedded-opentype'),
+             url('../../fonts/icon.woff')
+               format('woff'),
+             url('../../fonts/icon.ttf')
+               format('truetype'),
+             url('../../fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open%20Sans:400,700%7CSource+Code+Pro">
+    <style>
+      body, input {
+        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Source Code Pro', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="../../stylesheets/as_common.css">
+    
+    <link rel="stylesheet" href="../../stylesheets/as_custom.css">
+    
+    <script src="../../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-grey palette-accent-red">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="logo">
+        <a href="http://www.activestate.com/">
+          <img src="../../images/logo.png" alt="ActiveState homepage">
+        </a>
+      </div>
+      <div class="title">
+        <a href="http://docs.activestate.com/">docs.activestate.com</a>
+      </div>
+    </div>
+
+    
+
+    
+    
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../../index.html" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/as_tcl.png">
+        </div>
+      
+      <div class="name">
+        <strong>ActiveTcl 8.6.8 Documentation </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+
+
+
+<a  title="Get ActiveTcl" href="../index.html">
+	
+	Get ActiveTcl
+</a>
+
+
+
+  
+    <ul>
+      
+        
+        
+
+
+
+<a class="current" title="Release notes" href="index.html">
+	
+	Release notes
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="Windows installation" href="../windows/index.html">
+	
+	Windows installation
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Linux/Unix Installaton" href="../linux/index.html">
+	
+	Linux/Unix Installaton
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="macOS Installation" href="../macos/index.html">
+	
+	macOS Installation
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="License" href="../license/index.html">
+	
+	License
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+
+
+
+<a  title="Get Started" href="../../start/index.html">
+	
+	Get Started
+</a>
+
+
+
+  
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Package Reference" href="../../pkg/index.html">
+	
+	Package Reference
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Tcl 8.6.8 docs" href="../../tcl/contents.html">
+	
+	Tcl 8.6.8 docs
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+
+
+
+<a  title="Contact Us" href="../../contact/index.html">
+	
+	Contact Us
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Release Notes </h1>
+
+			
+
+<p>Tcl/Tk 8.6.8 Release Announcement
+December 22, 2017</p>
+
+<p>The Tcl Core Team is pleased to announce the 8.6.8 releases of the Tcl
+dynamic language and the Tk toolkit.  This is the eighth patch release
+of Tcl/Tk 8.6.  More details can be found below.  We would like to
+express our gratitude to all those who submit bug reports and patches.
+This information is invaluable in enabling us to identify and eliminate
+problems in the core.</p>
+
+<h3 id="where-to-get-the-new-releases">Where to get the new releases:</h3>
+
+<p>Tcl/Tk 8.6.8 sources are freely available as open source from the
+Tcl Developer Xchange web site at:</p>
+
+<p><a href="http://www.tcl.tk/software/tcltk/8.6.html" target="\_blank"><a href="http://www.tcl.tk/software/tcltk/8.6.html">http://www.tcl.tk/software/tcltk/8.6.html</a></a></p>
+
+<p>This web page also contains additional information about the releases,
+including new features and notes about installing and compiling the
+releases.  Sources are always available from the Tcl SourceForge
+project&rsquo;s file distribution area:</p>
+
+<p><a href="http://sourceforge.net/projects/tcl/files/" target="\_blank"><a href="http://sourceforge.net/projects/tcl/files/">http://sourceforge.net/projects/tcl/files/</a></a></p>
+
+<p>Binaries for most major platforms are available from:</p>
+
+<p><a href="http://www.activestate.com/Tcl" target="\_blank"><a href="http://www.activestate.com/Tcl">http://www.activestate.com/Tcl</a></a></p>
+
+<h3 id="for-additional-information">For additional information:</h3>
+
+<p>Please visit the Tcl Developer Xchange web site:</p>
+
+<p><a href="http://www.tcl.tk/" target="\_blank"><a href="http://www.tcl.tk/">http://www.tcl.tk/</a></a></p>
+
+<p>This site contains a variety of information about Tcl/Tk in general, the
+core Tcl and Tk distributions, Tcl development tools, and much more.</p>
+
+<h3 id="summary-of-changes-since-tcl-tk-8-6-7">Summary of Changes since Tcl/Tk 8.6.7:</h3>
+
+<p>This is a patch release, so it primarily includes bug fixes and corrections
+to erratic behavior.  Highlighted changes are noted below.  The changes file
+at the root of the source tree contains a more complete list.  The Timelines
+of all changes are online.</p>
+
+<p><a href="http://core.tcl.tk/tcl/" target="\_blank"><a href="http://core.tcl.tk/tcl/">http://core.tcl.tk/tcl/</a></a><br>
+<a href="http://core.tcl.tk/tk/" target="\_blank"><a href="http://core.tcl.tk/tk/">http://core.tcl.tk/tk/</a></a></p>
+
+<ul>
+<li><p>[TIP 477] nmake build system reform</p></li>
+
+<li><p>Support for backrefs in [array names -regexp]</p></li>
+
+<li><p>[info * methods] includes mixins (fellows)</p></li>
+
+<li><p>[package prefer stable] failing case</p></li>
+
+<li><p>More robust [load] for ReactOS</p></li>
+
+<li><p>Fix crashes or hangs in&hellip;</p>
+
+<ul>
+<li>traced namespace teardown</li>
+<li>method cloning, oo-15.15</li>
+<li>hash table overflow 32 bits</li>
+<li>enemble configure -map $x -subcommands $x</li>
+<li>memory exhaustion, imgPhoto-18.*</li>
+<li>photo image copy to self</li>
+<li>[scale] set with a bignum value</li>
+</ul></li>
+
+<li><p>Fix memory leaks in&hellip;</p>
+
+<ul>
+<li>[text] B-tree operations</li>
+<li>photo image operations</li>
+<li>Tk platform code for macOS 10.13</li>
+</ul></li>
+
+<li><p>Canvas closed polylines fully honor -joinstyle</p></li>
+
+<li><p>Fix coords rounding when drawing canvas items</p></li>
+
+<li><p>Linux fontchooser sync with available fonts</p></li>
+
+<li><p>Canvas rotated text overlap detection</p></li>
+
+<li><p>Display of Long non-wrapped lines in text</p></li>
+
+<li><p>Drop support for macOS 10.5</p></li>
+
+<li><p>Tk improvements on macOS&hellip;</p>
+
+<ul>
+<li>Implement [wm_iconphoto]</li>
+<li>colorspace improvement</li>
+<li>scrolling issues</li>
+<li>clipping regions in scrolling and drawing</li>
+<li>redraw artifacts</li>
+<li>responsive menu bar for command line apps</li>
+<li>support png from mac screenshots</li>
+<li>file selector &ldquo;all types&rdquo; setting</li>
+<li>fixes for [raise]</li>
+<li>support of menu -postcommand</li>
+<li>enable custom icon display</li>
+<li>fix bind failures</li>
+<li>make [tk busy -cursor] a silent no-op</li>
+<li>[wm withdraw] on Window and Dock menus</li>
+</ul></li>
+
+<li><p>Updated bundled packages</p>
+
+<ul>
+<li>Itcl 4.1.1  (incompatible with Itk 4.0, get Itk 4.1)</li>
+<li>sqlite3 3.21.0</li>
+<li>Thread 2.8.2</li>
+<li>tdbc* 1.0.6</li>
+<li>http 2.8.12</li>
+</ul></li>
+</ul>
+
+<p>Tcl Core Team and Maintainers
+Don Porter, Tcl Core Release Manager</p>
+
+
+			<aside class="copyright" role="note">
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				<div class="as_footer">
+  
+  <div class="prod_links">
+    <strong>
+    <a href="http://www.activestate.com/downloads" target="_blank">Downloads</a>&nbsp;&nbsp;
+    <a href="http://store.activestate.com/" target="_blank">Store</a>&nbsp;&nbsp;
+    <a href="http://community.activestate.com/" target="_blank">Community</a>&nbsp;&nbsp;
+    <a href="http://github.com/activestate/code" target="_blank">Code Recipes</a>&nbsp;&nbsp;
+  </strong>
+  </div>
+  <div class="as_copyright"> 
+    &copy; 2018 ActiveState Software Inc. All rights reserved. <strong><a href="../../trademarks/index.html">Trademarks</a>. <a href="http://www.activestate.com/privacy-policy">Privacy Policy</a>.</strong>
+  </div>
+</div>
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="../../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "¶";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+      <script>
+        (function(i,s,o,g,r,a,m){
+          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          'script', '//www.google-analytics.com/analytics.js', 'ga');
+         
+        ga('create', 'UA-20072-24', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+         
+        var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              ga('send', 'event', 'outbound', action, item.href);
+            });
+          }
+        });
+         
+        var query = document.querySelector('.query');
+        query.addEventListener('blur', function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga('send', 'pageview', path + '?q=' + this.value);
+          }
+        });
+      </script>
+    
+
+    <script src="../../javascripts/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

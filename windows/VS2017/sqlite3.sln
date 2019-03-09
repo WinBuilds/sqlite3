@@ -8,6 +8,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite3lib", "sqlite3lib.vcxproj", "{3C72FC13-C855-405C-A9BB-0C597CE3936B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite3dll", "sqlite3dll.vcxproj", "{84963265-62A3-4B03-93BB-4B0B84347447}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3C72FC13-C855-405C-A9BB-0C597CE3936B} = {3C72FC13-C855-405C-A9BB-0C597CE3936B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -136,7 +136,7 @@ static MatchinfoBuffer *fts3MIBufferNew(int nElem, const char *zMatchinfo){
   pRet = sqlite3_malloc(nByte + nStr+1);
   if( pRet ){
     memset(pRet, 0, nByte);
-    pRet->aMatchinfo[0] = (u8*)(&pRet->aMatchinfo[1]) - (u8*)pRet;
+    pRet->aMatchinfo[0] = (u32)(&pRet->aMatchinfo[1] - (u32*)pRet);
     pRet->aMatchinfo[1+nElem] = pRet->aMatchinfo[0] + sizeof(u32)*(nElem+1);
     pRet->nElem = nElem;
     pRet->zMatchinfo = ((char*)pRet) + nByte;
@@ -608,7 +608,8 @@ static int fts3StringAppend(
   ** appended data.
   */
   if( pStr->n+nAppend+1>=pStr->nAlloc ){
-    sqlite3_int64 nAlloc = pStr->nAlloc+(sqlite3_int64)nAppend+100;
+    //sqlite3_int64 nAlloc = pStr->nAlloc+(sqlite3_int64)nAppend+100;
+    int nAlloc = pStr->nAlloc + nAppend + 100;
     char *zNew = sqlite3_realloc64(pStr->z, nAlloc);
     if( !zNew ){
       return SQLITE_NOMEM;

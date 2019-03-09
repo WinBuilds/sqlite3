@@ -38,10 +38,24 @@
     <ClCompile Include="..\..\src\expr.c" />
     <ClCompile Include="..\..\src\fault.c" />
     <ClCompile Include="..\..\src\fkey.c" />
+    <ClCompile Include="..\..\src\fts3.c" />
+    <ClCompile Include="..\..\src\fts3_aux.c" />
+    <ClCompile Include="..\..\src\fts3_expr.c" />
+    <ClCompile Include="..\..\src\fts3_hash.c" />
+    <ClCompile Include="..\..\src\fts3_icu.c" />
+    <ClCompile Include="..\..\src\fts3_porter.c" />
+    <ClCompile Include="..\..\src\fts3_snippet.c" />
+    <ClCompile Include="..\..\src\fts3_tokenizer.c" />
+    <ClCompile Include="..\..\src\fts3_tokenizer1.c" />
+    <ClCompile Include="..\..\src\fts3_tokenize_vtab.c" />
+    <ClCompile Include="..\..\src\fts3_unicode.c" />
+    <ClCompile Include="..\..\src\fts3_unicode2.c" />
+    <ClCompile Include="..\..\src\fts3_write.c" />
     <ClCompile Include="..\..\src\func.c" />
     <ClCompile Include="..\..\src\global.c" />
     <ClCompile Include="..\..\src\hash.c" />
     <ClCompile Include="..\..\src\insert.c" />
+    <ClCompile Include="..\..\src\json1.c" />
     <ClCompile Include="..\..\src\legacy.c" />
     <ClCompile Include="..\..\src\loadext.c" />
     <ClCompile Include="..\..\src\main.c" />
@@ -68,7 +82,9 @@
     <ClCompile Include="..\..\src\rowset.c" />
     <ClCompile Include="..\..\src\rtree.c" />
     <ClCompile Include="..\..\src\select.c" />
+    <ClCompile Include="..\..\src\sqlite3session.c" />
     <ClCompile Include="..\..\src\status.c" />
+    <ClCompile Include="..\..\src\stmt.c" />
     <ClCompile Include="..\..\src\table.c" />
     <ClCompile Include="..\..\src\threads.c" />
     <ClCompile Include="..\..\src\tokenize.c" />
@@ -96,8 +112,13 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\btree.h" />
     <ClInclude Include="..\..\src\btreeInt.h" />
+    <ClInclude Include="..\..\src\fts3.h" />
+    <ClInclude Include="..\..\src\fts3Int.h" />
+    <ClInclude Include="..\..\src\fts3_hash.h" />
+    <ClInclude Include="..\..\src\fts3_tokenizer.h" />
     <ClInclude Include="..\..\src\hash.h" />
     <ClInclude Include="..\..\src\hwtime.h" />
+    <ClInclude Include="..\..\src\keywordhash.h" />
     <ClInclude Include="..\..\src\msvc.h" />
     <ClInclude Include="..\..\src\mutex.h" />
     <ClInclude Include="..\..\src\opcodes.h" />
@@ -110,6 +131,13 @@
     <ClInclude Include="..\..\src\pcache.h" />
     <ClInclude Include="..\..\src\pragma.h" />
     <ClInclude Include="..\..\src\rtree.h" />
+    <ClInclude Include="..\..\src\sqlite3ext.h" />
+    <ClInclude Include="..\..\src\sqlite3rc.h" />
+    <ClInclude Include="..\..\src\sqlite3rtree.h" />
+    <ClInclude Include="..\..\src\sqlite3session.h" />
+    <ClInclude Include="..\..\src\sqliteicu.h" />
+    <ClInclude Include="..\..\src\sqliteInt.h" />
+    <ClInclude Include="..\..\src\sqliteLimit.h" />
     <ClInclude Include="..\..\src\vdbe.h" />
     <ClInclude Include="..\..\src\vdbeInt.h" />
     <ClInclude Include="..\..\src\vxworks.h" />
@@ -194,7 +222,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;STATIC_BUILD;SQLITE_ENABLE_DESERIALIZE;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_ENABLE_UNLOCK_NOTIFY;SQLITE_ENABLE_DBPAGE_VTAB;SQLITE_ENABLE_DBSTAT_VTAB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>C:\ActiveTcl\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -203,6 +231,11 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
+copy "$(SolutionDir)..\..\src\sqlite3.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
+copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -210,7 +243,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;STATIC_BUILD;SQLITE_ENABLE_DESERIALIZE;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_ENABLE_UNLOCK_NOTIFY;SQLITE_ENABLE_DBPAGE_VTAB;SQLITE_ENABLE_DBSTAT_VTAB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>C:\ActiveTcl\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -219,6 +252,11 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
+copy "$(SolutionDir)..\..\src\sqlite3.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
+copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -228,7 +266,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;STATIC_BUILD;SQLITE_ENABLE_DESERIALIZE;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_ENABLE_UNLOCK_NOTIFY;SQLITE_ENABLE_DBPAGE_VTAB;SQLITE_ENABLE_DBSTAT_VTAB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalIncludeDirectories>C:\ActiveTcl\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -239,6 +277,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
+copy "$(SolutionDir)..\..\src\sqlite3.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
+copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -248,7 +291,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;STATIC_BUILD;SQLITE_ENABLE_DESERIALIZE;SQLITE_ENABLE_COLUMN_METADATA;SQLITE_ENABLE_UNLOCK_NOTIFY;SQLITE_ENABLE_DBPAGE_VTAB;SQLITE_ENABLE_DBSTAT_VTAB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalIncludeDirectories>C:\ActiveTcl\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -259,6 +302,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
+copy "$(SolutionDir)..\..\src\sqlite3.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
+copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

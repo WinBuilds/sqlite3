@@ -66,6 +66,7 @@
 #include <string.h>
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #ifndef SQLITE_AMALGAMATION
 #include "sqlite3rtree.h"
@@ -128,7 +129,9 @@ struct Rtree {
   u8 inWrTrans;               /* True if inside write transaction */
   u8 nAux;                    /* # of auxiliary columns in %_rowid */
   u8 nAuxNotNull;             /* Number of initial not-null aux columns */
+//#ifdef SQLITE_DEBUG
   u8 bCorrupt;                /* Shadow table corruption detected */
+//#endif
   int iDepth;                 /* Current depth of the r-tree structure */
   char *zDb;                  /* Name of database containing r-tree table */
   char *zName;                /* Name of r-tree table */ 
@@ -370,7 +373,7 @@ struct RtreeGeomCallback {
 ** operand to the MATCH operator of an R-Tree.
 */
 struct RtreeMatchArg {
-  u32 iSize;                  /* Size of this object */
+  sqlite3_int64 iSize;                  /* Size of this object */
   RtreeGeomCallback cb;       /* Info about the callback functions */
   int nParam;                 /* Number of parameters to the SQL function */
   sqlite3_value **apSqlParam; /* Original SQL parameter values */
@@ -435,8 +438,6 @@ struct RtreeMatchArg {
 # define MSVC_VERSION 0
 #endif
 #endif
-
-#include "sqliteInt.h"
 
 /*
 ** Functions to deserialize a 16 bit integer, 32 bit real number and
@@ -976,7 +977,7 @@ static void rtreeRelease(Rtree *pRtree){
   if( pRtree->nBusy==0 ){
     pRtree->inWrTrans = 0;
     assert( pRtree->nCursor==0 );
-    nodeBlobReset(pRtree);
+    nodeBlobReset(pRtree);   
     assert( pRtree->nNodeRef==0 || pRtree->bCorrupt );
     sqlite3_finalize(pRtree->pWriteNode);
     sqlite3_finalize(pRtree->pDeleteNode);
@@ -1999,7 +2000,7 @@ static RtreeDValue cellArea(Rtree *pRtree, RtreeCell *p){
 #endif
   {
     switch( pRtree->nDim ){
-      case 5:  area  = (i64)p->aCoord[9].i - (i64)p->aCoord[8].i;
+      case 5:  area  = (RtreeDValue)((i64)p->aCoord[9].i - (i64)p->aCoord[8].i);
       case 4:  area *= (i64)p->aCoord[7].i - (i64)p->aCoord[6].i;
       case 3:  area *= (i64)p->aCoord[5].i - (i64)p->aCoord[4].i;
       case 2:  area *= (i64)p->aCoord[3].i - (i64)p->aCoord[2].i;

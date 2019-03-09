@@ -1106,7 +1106,7 @@ static int fts3ContentColumns(
 
     /* Set the output variables. */
     *pnCol = nCol;
-    *pnStr = nStr;
+    *pnStr = (int)nStr;
     *pazCol = azCol;
   }
 
