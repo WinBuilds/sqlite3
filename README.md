@@ -56,58 +56,6 @@ update to the lastest version using:
 
 Or type "fossil ui" to get a web-based user interface.
 
-## Compiling
-
-First create a directory in which to place
-the build products.  It is recommended, but not required, that the
-build directory be separate from the source directory.  Cd into the
-build directory and then from the build directory run the configure
-script found at the root of the source tree.  Then run "make".
-
-For example:
-
-        tar xzf sqlite.tar.gz    ;#  Unpack the source tree into "sqlite"
-        mkdir bld                ;#  Build will occur in a sibling directory
-        cd bld                   ;#  Change to the build directory
-        ../sqlite/configure      ;#  Run the configure script
-        make                     ;#  Run the makefile.
-        make sqlite3.c           ;#  Build the "amalgamation" source file
-        make test                ;#  Run some tests (requires Tcl)
-
-See the makefile for additional targets.
-
-The configure script uses autoconf 2.61 and libtool.  If the configure
-script does not work out for you, there is a generic makefile named
-"Makefile.linux-gcc" in the top directory of the source tree that you
-can copy and edit to suit your needs.  Comments on the generic makefile
-show what changes are needed.
-
-## Using MSVC
-
-On Windows, all applicable build products can be compiled with MSVC.
-First open the command prompt window associated with the desired compiler
-version (e.g. "Developer Command Prompt for VS2013").  Next, use NMAKE
-with the provided "Makefile.msc" to build one of the supported targets.
-
-For example:
-
-        mkdir bld
-        cd bld
-        nmake /f Makefile.msc TOP=..\sqlite
-        nmake /f Makefile.msc sqlite3.c TOP=..\sqlite
-        nmake /f Makefile.msc sqlite3.dll TOP=..\sqlite
-        nmake /f Makefile.msc sqlite3.exe TOP=..\sqlite
-        nmake /f Makefile.msc test TOP=..\sqlite
-
-There are several build options that can be set via the NMAKE command
-line.  For example, to build for WinRT, simply add "FOR_WINRT=1" argument
-to the "sqlite3.dll" command line above.  When debugging into the SQLite
-code, adding the "DEBUG=1" argument to one of the above command lines is
-recommended.
-
-SQLite does not require [Tcl](http://www.tcl.tk/) to run, but a Tcl installation
-is required by the makefiles (including those for MSVC).  SQLite contains
-a lot of generated code and Tcl is used to do much of that code generation.
 
 ## Source Code Tour
 
