@@ -8,6 +8,9 @@
     <Filter Include="Resource Files">
       <UniqueIdentifier>{babffde6-aebe-4b05-a078-65c3b88d9e45}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\fts3">
+      <UniqueIdentifier>{737bca7c-73a9-45df-beae-b9ee437401b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\alter.c">
@@ -229,45 +232,6 @@
     <ClCompile Include="..\..\src\rtree.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\fts3.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_aux.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_expr.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_hash.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_icu.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_porter.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_snippet.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_tokenize_vtab.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_tokenizer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_tokenizer1.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_unicode.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_unicode2.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\fts3_write.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\json1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -276,6 +240,51 @@
     </ClCompile>
     <ClCompile Include="..\..\src\stmt.c">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_aux.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_expr.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_hash.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_icu.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_porter.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_snippet.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_term.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_test.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenize_vtab.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenizer.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenizer1.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_unicode.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_unicode2.c">
+      <Filter>Source Files\fts3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ext\fts3\fts3_write.c">
+      <Filter>Source Files\fts3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -345,18 +354,6 @@
     <ClInclude Include="..\..\src\rtree.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\fts3.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\fts3_hash.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\fts3_tokenizer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\fts3Int.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\keywordhash.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -377,6 +374,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\sqliteLimit.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ext\fts3\fts3.h">
+      <Filter>Source Files\fts3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ext\fts3\fts3_hash.h">
+      <Filter>Source Files\fts3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ext\fts3\fts3_tokenizer.h">
+      <Filter>Source Files\fts3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ext\fts3\fts3Int.h">
+      <Filter>Source Files\fts3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

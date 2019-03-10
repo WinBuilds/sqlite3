@@ -19,6 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\ext\fts3\fts3.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_aux.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_expr.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_hash.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_icu.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_porter.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_snippet.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_term.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_test.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenizer.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenizer1.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenize_vtab.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_unicode.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_unicode2.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_write.c" />
     <ClCompile Include="..\..\src\alter.c" />
     <ClCompile Include="..\..\src\analyze.c" />
     <ClCompile Include="..\..\src\attach.c" />
@@ -38,19 +53,6 @@
     <ClCompile Include="..\..\src\expr.c" />
     <ClCompile Include="..\..\src\fault.c" />
     <ClCompile Include="..\..\src\fkey.c" />
-    <ClCompile Include="..\..\src\fts3.c" />
-    <ClCompile Include="..\..\src\fts3_aux.c" />
-    <ClCompile Include="..\..\src\fts3_expr.c" />
-    <ClCompile Include="..\..\src\fts3_hash.c" />
-    <ClCompile Include="..\..\src\fts3_icu.c" />
-    <ClCompile Include="..\..\src\fts3_porter.c" />
-    <ClCompile Include="..\..\src\fts3_snippet.c" />
-    <ClCompile Include="..\..\src\fts3_tokenizer.c" />
-    <ClCompile Include="..\..\src\fts3_tokenizer1.c" />
-    <ClCompile Include="..\..\src\fts3_tokenize_vtab.c" />
-    <ClCompile Include="..\..\src\fts3_unicode.c" />
-    <ClCompile Include="..\..\src\fts3_unicode2.c" />
-    <ClCompile Include="..\..\src\fts3_write.c" />
     <ClCompile Include="..\..\src\func.c" />
     <ClCompile Include="..\..\src\global.c" />
     <ClCompile Include="..\..\src\hash.c" />
@@ -110,12 +112,12 @@
     <ClCompile Include="..\..\src\window.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\ext\fts3\fts3.h" />
+    <ClInclude Include="..\..\ext\fts3\fts3Int.h" />
+    <ClInclude Include="..\..\ext\fts3\fts3_hash.h" />
+    <ClInclude Include="..\..\ext\fts3\fts3_tokenizer.h" />
     <ClInclude Include="..\..\src\btree.h" />
     <ClInclude Include="..\..\src\btreeInt.h" />
-    <ClInclude Include="..\..\src\fts3.h" />
-    <ClInclude Include="..\..\src\fts3Int.h" />
-    <ClInclude Include="..\..\src\fts3_hash.h" />
-    <ClInclude Include="..\..\src\fts3_tokenizer.h" />
     <ClInclude Include="..\..\src\hash.h" />
     <ClInclude Include="..\..\src\hwtime.h" />
     <ClInclude Include="..\..\src\keywordhash.h" />

@@ -158,7 +158,7 @@ struct Fts3SegReader {
   */
   int nTerm;                      /* Number of bytes in current term */
   char *zTerm;                    /* Pointer to current term */
-  int nTermAlloc;                 /* Allocated size of zTerm buffer */
+  i64 nTermAlloc;                 /* Allocated size of zTerm buffer */
   char *aDoclist;                 /* Pointer to doclist of current entry */
   int nDoclist;                   /* Size of doclist in current entry */
 

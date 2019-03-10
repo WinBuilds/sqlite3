@@ -19,6 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\ext\fts3\fts3.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_aux.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_expr.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_hash.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_icu.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_porter.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_snippet.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenizer.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenizer1.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_tokenize_vtab.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_unicode.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_unicode2.c" />
+    <ClCompile Include="..\..\ext\fts3\fts3_write.c" />
     <ClCompile Include="..\..\src\alter.c" />
     <ClCompile Include="..\..\src\analyze.c" />
     <ClCompile Include="..\..\src\attach.c" />
@@ -38,19 +51,6 @@
     <ClCompile Include="..\..\src\expr.c" />
     <ClCompile Include="..\..\src\fault.c" />
     <ClCompile Include="..\..\src\fkey.c" />
-    <ClCompile Include="..\..\src\fts3.c" />
-    <ClCompile Include="..\..\src\fts3_aux.c" />
-    <ClCompile Include="..\..\src\fts3_expr.c" />
-    <ClCompile Include="..\..\src\fts3_hash.c" />
-    <ClCompile Include="..\..\src\fts3_icu.c" />
-    <ClCompile Include="..\..\src\fts3_porter.c" />
-    <ClCompile Include="..\..\src\fts3_snippet.c" />
-    <ClCompile Include="..\..\src\fts3_tokenizer.c" />
-    <ClCompile Include="..\..\src\fts3_tokenizer1.c" />
-    <ClCompile Include="..\..\src\fts3_tokenize_vtab.c" />
-    <ClCompile Include="..\..\src\fts3_unicode.c" />
-    <ClCompile Include="..\..\src\fts3_unicode2.c" />
-    <ClCompile Include="..\..\src\fts3_write.c" />
     <ClCompile Include="..\..\src\func.c" />
     <ClCompile Include="..\..\src\global.c" />
     <ClCompile Include="..\..\src\hash.c" />
@@ -110,12 +110,12 @@
     <ClCompile Include="..\..\src\window.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\ext\fts3\fts3.h" />
+    <ClInclude Include="..\..\ext\fts3\fts3Int.h" />
+    <ClInclude Include="..\..\ext\fts3\fts3_hash.h" />
+    <ClInclude Include="..\..\ext\fts3\fts3_tokenizer.h" />
     <ClInclude Include="..\..\src\btree.h" />
     <ClInclude Include="..\..\src\btreeInt.h" />
-    <ClInclude Include="..\..\src\fts3.h" />
-    <ClInclude Include="..\..\src\fts3Int.h" />
-    <ClInclude Include="..\..\src\fts3_hash.h" />
-    <ClInclude Include="..\..\src\fts3_tokenizer.h" />
     <ClInclude Include="..\..\src\hash.h" />
     <ClInclude Include="..\..\src\hwtime.h" />
     <ClInclude Include="..\..\src\keywordhash.h" />
@@ -236,6 +236,32 @@
 copy "$(SolutionDir)..\..\src\sqlite3.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
 copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rem del /Q parse.y parse.out parse.c parse.h parse.h.temp fts5parse.y fts5parse.h fts5parse.out 2&gt;NUL
+copy /Y ..\..\tool\lempar.c .
+copy /Y ..\..\src\parse.y .
+$(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   parse.y
+
+move parse.h parse.h.temp
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\addopcodes.tcl parse.h.temp &gt; parse.h
+
+type parse.h ..\..\src\vdbe.c | ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkopcodeh.tcl &gt; ..\..\src\opcodes.h
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkopcodec.tcl ..\..\src\opcodes.h &gt; ..\..\src\opcodes.c
+copy /Y parse.c ..\..\src\parse.c
+copy /Y parse.h ..\..\src\parse.h
+$(OutDir)../bin/mkkeywordhash.exe &gt; ..\..\src\keywordhash.h
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkshellc.tcl &gt; ..\..\src\shell.c
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
+copy /Y ..\..\ext\fts5\fts5parse.y .
+$(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   fts5parse.y
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\ext\fts5\tool\mkfts5c.tcl
+copy ..\..\ext\fts5\fts5.h .
+
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -257,6 +283,32 @@ copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Pla
 copy "$(SolutionDir)..\..\src\sqlite3.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
 copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rem del /Q parse.y parse.out parse.c parse.h parse.h.temp fts5parse.y fts5parse.h fts5parse.out 2&gt;NUL
+copy /Y ..\..\tool\lempar.c .
+copy /Y ..\..\src\parse.y .
+$(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   parse.y
+
+move parse.h parse.h.temp
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\addopcodes.tcl parse.h.temp &gt; parse.h
+
+type parse.h ..\..\src\vdbe.c | ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkopcodeh.tcl &gt; ..\..\src\opcodes.h
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkopcodec.tcl ..\..\src\opcodes.h &gt; ..\..\src\opcodes.c
+copy /Y parse.c ..\..\src\parse.c
+copy /Y parse.h ..\..\src\parse.h
+$(OutDir)../bin/mkkeywordhash.exe &gt; ..\..\src\keywordhash.h
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkshellc.tcl &gt; ..\..\src\shell.c
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
+copy /Y ..\..\ext\fts5\fts5parse.y .
+$(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   fts5parse.y
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\ext\fts5\tool\mkfts5c.tcl
+copy ..\..\ext\fts5\fts5.h .
+
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -282,6 +334,32 @@ copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Pla
 copy "$(SolutionDir)..\..\src\sqlite3.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
 copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rem del /Q parse.y parse.out parse.c parse.h parse.h.temp fts5parse.y fts5parse.h fts5parse.out 2&gt;NUL
+copy /Y ..\..\tool\lempar.c .
+copy /Y ..\..\src\parse.y .
+$(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   parse.y
+
+move parse.h parse.h.temp
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\addopcodes.tcl parse.h.temp &gt; parse.h
+
+type parse.h ..\..\src\vdbe.c | ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkopcodeh.tcl &gt; ..\..\src\opcodes.h
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkopcodec.tcl ..\..\src\opcodes.h &gt; ..\..\src\opcodes.c
+copy /Y parse.c ..\..\src\parse.c
+copy /Y parse.h ..\..\src\parse.h
+$(OutDir)../bin/mkkeywordhash.exe &gt; ..\..\src\keywordhash.h
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkshellc.tcl &gt; ..\..\src\shell.c
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
+copy /Y ..\..\ext\fts5\fts5parse.y .
+$(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   fts5parse.y
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\ext\fts5\tool\mkfts5c.tcl
+copy ..\..\ext\fts5\fts5.h .
+
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -307,6 +385,32 @@ copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Pla
 copy "$(SolutionDir)..\..\src\sqlite3.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"
 copy "$(SolutionDir)..\..\src\sqlite3ext.h" "$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\sqlite3\"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rem del /Q parse.y parse.out parse.c parse.h parse.h.temp fts5parse.y fts5parse.h fts5parse.out 2&gt;NUL
+copy /Y ..\..\tool\lempar.c .
+copy /Y ..\..\src\parse.y .
+$(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   parse.y
+
+move parse.h parse.h.temp
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\addopcodes.tcl parse.h.temp &gt; parse.h
+
+type parse.h ..\..\src\vdbe.c | ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkopcodeh.tcl &gt; ..\..\src\opcodes.h
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkopcodec.tcl ..\..\src\opcodes.h &gt; ..\..\src\opcodes.c
+copy /Y parse.c ..\..\src\parse.c
+copy /Y parse.h ..\..\src\parse.h
+$(OutDir)../bin/mkkeywordhash.exe &gt; ..\..\src\keywordhash.h
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkshellc.tcl &gt; ..\..\src\shell.c
+..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
+copy /Y ..\..\ext\fts5\fts5parse.y .
+$(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   fts5parse.y
+
+..\..\compat\tcl\bin\tclsh.exe ..\..\ext\fts5\tool\mkfts5c.tcl
+copy ..\..\ext\fts5\fts5.h .
+
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
