@@ -1173,11 +1173,11 @@ static int fts3InitVtab(
   nByte = sizeof(const char *) * (argc-2);
   aCol = (const char **)sqlite3_malloc64(nByte);
   if( aCol ){
-    memset((void*)aCol, 0, nByte);
+    sqlite3_memset((void*)aCol, 0, nByte);
     azNotindexed = (char **)sqlite3_malloc64(nByte);
   }
   if( azNotindexed ){
-    memset(azNotindexed, 0, nByte);
+     sqlite3_memset(azNotindexed, 0, nByte);
   }
   if( !aCol || !azNotindexed ){
     rc = SQLITE_NOMEM;
@@ -1374,7 +1374,7 @@ static int fts3InitVtab(
     rc = SQLITE_NOMEM;
     goto fts3_init_out;
   }
-  memset(p, 0, nByte);
+  sqlite3_memset(p, 0, nByte);
   p->db = db;
   p->nColumn = nCol;
   p->nPendingData = 0;

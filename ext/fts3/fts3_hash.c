@@ -38,7 +38,7 @@
 static void *fts3HashMalloc(sqlite3_int64 n){
   void *p = sqlite3_malloc64(n);
   if( p ){
-    memset(p, 0, n);
+     sqlite3_memset(p, 0, n);
   }
   return p;
 }

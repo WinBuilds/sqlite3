@@ -56,12 +56,8 @@
 #if !defined(SQLITE_CORE) \
   || (defined(SQLITE_ENABLE_RTREE) && !defined(SQLITE_OMIT_VIRTUALTABLE))
 
-#ifndef SQLITE_CORE
-  #include "sqlite3ext.h"
-  SQLITE_EXTENSION_INIT1
-#else
-  #include "sqlite3.h"
-#endif
+
+#include "memInt.h"
 
 #include <string.h>
 #include <assert.h>
@@ -1736,9 +1732,9 @@ static int deserializeGeometry(sqlite3_value *pValue, RtreeConstraint *pCons){
   pInfo = (sqlite3_rtree_query_info*)
                 sqlite3_malloc64( sizeof(*pInfo)+pSrc->iSize );
   if( !pInfo ) return SQLITE_NOMEM;
-  memset(pInfo, 0, sizeof(*pInfo));
+  sqlite3_memset(pInfo, 0, sizeof(*pInfo));
   pBlob = (RtreeMatchArg*)&pInfo[1];
-  memcpy(pBlob, pSrc, pSrc->iSize);
+  sqlite3_memcpy(pBlob, pSrc, pSrc->iSize);
   pInfo->pContext = pBlob->cb.pContext;
   pInfo->nParam = pBlob->nParam;
   pInfo->aParam = pBlob->aParam;
@@ -2385,7 +2381,7 @@ static int splitNodeStartree(
   }
 
   aSpare = &((int *)&aaSorted[pRtree->nDim])[pRtree->nDim*nCell];
-  memset(aaSorted, 0, nByte);
+  sqlite3_memset(aaSorted, 0, nByte);
   for(ii=0; ii<pRtree->nDim; ii++){
     int jj;
     aaSorted[ii] = &((int *)&aaSorted[pRtree->nDim])[ii*nCell];

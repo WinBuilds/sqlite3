@@ -35,13 +35,8 @@
 
 #if !defined(SQLITE_CORE) || defined(SQLITE_ENABLE_FTS3)
 
-/* If not building as part of the core, include sqlite3ext.h. */
-#ifndef SQLITE_CORE
-# include "sqlite3ext.h" 
-SQLITE_EXTENSION_INIT3
-#endif
+#include "memInt.h"
 
-#include "sqlite3.h"
 #include "fts3_tokenizer.h"
 #include "fts3_hash.h"
 
@@ -473,6 +468,7 @@ struct Fts3Expr {
 #define FTSQUERY_OR     4
 #define FTSQUERY_PHRASE 5
 
+#include "memInt.h"
 
 /* fts3_write.c */
 int sqlite3Fts3UpdateMethod(sqlite3_vtab*,int,sqlite3_value**,sqlite3_int64*);

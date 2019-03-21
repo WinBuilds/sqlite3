@@ -14,6 +14,7 @@
 ** RTREE library.  All it does is declare the sqlite3RtreeInit() interface.
 */
 #include "sqlite3.h"
+#include "memInt.h"
 
 #ifdef SQLITE_OMIT_VIRTUALTABLE
 # undef SQLITE_ENABLE_RTREE

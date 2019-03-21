@@ -124,7 +124,7 @@ static int fts3isspace(char c){
 */
 static void *fts3MallocZero(sqlite3_int64 nByte){
   void *pRet = sqlite3_malloc64(nByte);
-  if( pRet ) memset(pRet, 0, nByte);
+  if( pRet ) sqlite3_memset(pRet, 0, nByte);
   return pRet;
 }
 

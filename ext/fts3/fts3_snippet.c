@@ -542,7 +542,7 @@ static int fts3BestSnippet(
   if( !sIter.aPhrase ){
     return SQLITE_NOMEM;
   }
-  memset(sIter.aPhrase, 0, nByte);
+  sqlite3_memset(sIter.aPhrase, 0, nByte);
 
   /* Initialize the contents of the SnippetIter object. Then iterate through
   ** the set of phrases in the expression to populate the aPhrase[] array.
