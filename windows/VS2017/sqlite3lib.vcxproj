@@ -32,6 +32,7 @@
     <ClCompile Include="..\..\ext\fts3\fts3_unicode.c" />
     <ClCompile Include="..\..\ext\fts3\fts3_unicode2.c" />
     <ClCompile Include="..\..\ext\fts3\fts3_write.c" />
+    <ClCompile Include="..\..\ext\icu\icu.c" />
     <ClCompile Include="..\..\src\alter.c" />
     <ClCompile Include="..\..\src\analyze.c" />
     <ClCompile Include="..\..\src\attach.c" />
@@ -149,7 +150,7 @@
     <ProjectGuid>{3C72FC13-C855-405C-A9BB-0C597CE3936B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>sqlite3lib</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -224,7 +225,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;SQLITE_ENABLE_ICU=1;SQLITE_ENABLE_ICU_COLLATIONS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\ActiveTcl\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -271,7 +272,7 @@ copy ..\..\ext\fts5\fts5.h .
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>__x86_64__;_DEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;SQLITE_ENABLE_ICU=1;SQLITE_ENABLE_ICU_COLLATIONS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\ActiveTcl\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -320,7 +321,7 @@ copy ..\..\ext\fts5\fts5.h .
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;SQLITE_ENABLE_ICU=1;SQLITE_ENABLE_ICU_COLLATIONS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\ActiveTcl\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -371,7 +372,7 @@ copy ..\..\ext\fts5\fts5.h .
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>__x86_64__;NDEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;SQLITE_ENABLE_ICU=1;SQLITE_ENABLE_ICU_COLLATIONS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\ActiveTcl\include;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>

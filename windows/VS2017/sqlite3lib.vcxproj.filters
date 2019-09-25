@@ -8,6 +8,9 @@
     <Filter Include="Source Files\fts3">
       <UniqueIdentifier>{6a410e55-6ae6-450d-beb9-51d2b9ba5d20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\icu">
+      <UniqueIdentifier>{b613583b-abf3-4e10-a7b4-09cc1619c408}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\alter.c">
@@ -277,6 +280,9 @@
     <ClCompile Include="..\..\ext\fts3\fts3_write.c">
       <Filter>Source Files\fts3</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\ext\icu\icu.c">
+      <Filter>Source Files\icu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\btree.h">
@@ -357,9 +363,6 @@
     <ClInclude Include="..\..\src\sqlite3session.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\sqliteicu.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\sqliteInt.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -377,6 +380,9 @@
     </ClInclude>
     <ClInclude Include="..\..\ext\fts3\fts3Int.h">
       <Filter>Source Files\fts3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sqliteicu.h">
+      <Filter>Source Files\icu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
