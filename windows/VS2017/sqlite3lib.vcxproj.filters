@@ -384,5 +384,8 @@
     <ClInclude Include="..\..\src\sqliteicu.h">
       <Filter>Source Files\icu</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\sqlite3.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

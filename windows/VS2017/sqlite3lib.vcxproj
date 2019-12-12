@@ -132,6 +132,7 @@
     <ClInclude Include="..\..\src\pcache.h" />
     <ClInclude Include="..\..\src\pragma.h" />
     <ClInclude Include="..\..\src\rtree.h" />
+    <ClInclude Include="..\..\src\sqlite3.h" />
     <ClInclude Include="..\..\src\sqlite3ext.h" />
     <ClInclude Include="..\..\src\sqlite3rc.h" />
     <ClInclude Include="..\..\src\sqlite3rtree.h" />
@@ -201,21 +202,25 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/lib/</OutDir>
     <IntDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/lib/</OutDir>
     <IntDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/lib/</OutDir>
     <IntDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/lib/</OutDir>
     <IntDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -223,7 +228,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;HAVE_STDINT_H=1;HAVE_INTTYPES_H=1;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -254,7 +259,7 @@ copy /Y parse.c ..\..\src\parse.c
 copy /Y parse.h ..\..\src\parse.h
 $(OutDir)../bin/mkkeywordhash.exe &gt; ..\..\src\keywordhash.h
 ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkshellc.tcl &gt; ..\..\src\shell.c
-..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
+rem ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
 copy /Y ..\..\ext\fts5\fts5parse.y .
 $(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   fts5parse.y
 
@@ -278,7 +283,7 @@ copy ..\..\ext\fts5\fts5.h .
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>__x86_64__;_DEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__x86_64__;_DEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;HAVE_STDINT_H=1;HAVE_INTTYPES_H=1;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -309,7 +314,7 @@ copy /Y parse.c ..\..\src\parse.c
 copy /Y parse.h ..\..\src\parse.h
 $(OutDir)../bin/mkkeywordhash.exe &gt; ..\..\src\keywordhash.h
 ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkshellc.tcl &gt; ..\..\src\shell.c
-..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
+rem ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
 copy /Y ..\..\ext\fts5\fts5parse.y .
 $(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   fts5parse.y
 
@@ -336,7 +341,7 @@ copy ..\..\ext\fts5\fts5.h .
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;HAVE_STDINT_H=1;HAVE_INTTYPES_H=1;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -369,7 +374,7 @@ copy /Y parse.c ..\..\src\parse.c
 copy /Y parse.h ..\..\src\parse.h
 $(OutDir)../bin/mkkeywordhash.exe &gt; ..\..\src\keywordhash.h
 ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkshellc.tcl &gt; ..\..\src\shell.c
-..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
+rem ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
 copy /Y ..\..\ext\fts5\fts5parse.y .
 $(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   fts5parse.y
 
@@ -395,7 +400,7 @@ copy ..\..\ext\fts5\fts5.h .
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>__x86_64__;NDEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__x86_64__;NDEBUG;_LIB;STATIC_BUILD;SQLITE_CORE=1;HAVE_READLINE=0;HAVE_STDINT_H=1;HAVE_INTTYPES_H=1;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -428,7 +433,7 @@ copy /Y parse.c ..\..\src\parse.c
 copy /Y parse.h ..\..\src\parse.h
 $(OutDir)../bin/mkkeywordhash.exe &gt; ..\..\src\keywordhash.h
 ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mkshellc.tcl &gt; ..\..\src\shell.c
-..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
+rem ..\..\compat\tcl\bin\tclsh.exe ..\..\tool\mksqlite3h.tcl "../.." &gt; ..\..\src\sqlite3.h
 copy /Y ..\..\ext\fts5\fts5parse.y .
 $(OutDir)../bin/lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_JSON1=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_INTROSPECTION_PRAGMAS=1 -DSQLITE_ENABLE_DESERIALIZE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1   fts5parse.y
 
