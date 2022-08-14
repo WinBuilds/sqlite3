@@ -207,23 +207,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/bin/</OutDir>
-    <IntDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc16_$(Platform)/$(Configuration)/bin/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc16_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/bin/</OutDir>
-    <IntDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc16_$(Platform)/$(Configuration)/bin/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc16_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/bin/</OutDir>
-    <IntDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc16_$(Platform)/$(Configuration)/bin/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc16_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/bin/</OutDir>
-    <IntDir>$(WINBUILDS_ROOT)build_msvc15_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc16_$(Platform)/$(Configuration)/bin/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc16_$(Platform)/$(Configuration)/obj/$(TargetName)/</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -233,7 +233,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;SQLITE3DLL_EXPORTS;_WINDOWS;_USRDLL;SQLITE_CORE=1;HAVE_READLINE=0;HAVE_STDINT_H=1;HAVE_INTTYPES_H=1;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc16_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -253,7 +253,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;SQLITE3DLL_EXPORTS;_WINDOWS;_USRDLL;SQLITE_CORE=1;HAVE_READLINE=0;HAVE_STDINT_H=1;HAVE_INTTYPES_H=1;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc16_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -275,7 +275,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;SQLITE3DLL_EXPORTS;_WINDOWS;_USRDLL;SQLITE_CORE=1;HAVE_READLINE=0;HAVE_STDINT_H=1;HAVE_INTTYPES_H=1;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc16_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -299,7 +299,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;SQLITE3DLL_EXPORTS;_WINDOWS;_USRDLL;SQLITE_CORE=1;HAVE_READLINE=0;HAVE_STDINT_H=1;HAVE_INTTYPES_H=1;INCLUDE_MSVC_H=1;SQLITE_OS_WIN=1;SQLITE_TEMP_STORE=1;SQLITE_THREADSAFE=1;SQLITE_THREAD_OVERRIDE_LOCK=-1;SQLITE_ENABLE_DESERIALIZE=1;SQLITE_ENABLE_COLUMN_METADATA=1;SQLITE_ENABLE_UNLOCK_NOTIFY=1;SQLITE_ENABLE_DBPAGE_VTAB=1;SQLITE_ENABLE_DBSTAT_VTAB=1;SQLITE_ENABLE_EXPLAIN_COMMENTS=1;SQLITE_ENABLE_FTS3=1;SQLITE_ENABLE_FTS4=1;SQLITE_ENABLE_GEOPOLY=1;SQLITE_ENABLE_JSON1=1;SQLITE_ENABLE_RTREE=1;SQLITE_ENABLE_STMTVTAB=1;SQLITE_INTROSPECTION_PRAGMAS=1;SQLITE_MAX_TRIGGER_DEPTH=100;SQLITE_ENABLE_OFFSET_SQL_FUNC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc15_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src;..\..\compat\tcl\include;$(WINBUILDS_ROOT)build_msvc16_$(Platform)\$(Configuration)\include\icu;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
